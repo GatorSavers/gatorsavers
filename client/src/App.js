@@ -9,7 +9,8 @@ import About from "./components/about"
 import Login from "./components/login"
 import Nav from "./components/nav"
 import Footer from "./components/footer"
-import "./App.css";
+import SideBar from './components/sidebar';
+import "./_app.scss";
 
 class App extends Component {
   render() {
@@ -28,38 +29,5 @@ class App extends Component {
     )
   }
 }
-    /** 
-    <BrowserRouter>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/pages/login">Login</Link>
-            </li>
-            <li>
-              <Link to="/pages/explore">Login</Link>
-            </li>
-            <li>
-              <Link to="/pages/about">About</Link>
-            </li>
-          </ul>
-        </nav>
-        <Routes>
-          <Route path="/pages/about">
-            <About/>
-          </Route>
-          <Route path="/pages/explore">
-            <Explore/>
-          </Route>
-          <Route path="/pages/login">
-            <Login/>
-          </Route>
-        </Routes>
-      </div>
-    </BrowserRouter>
-    **/
 
 export default App;
