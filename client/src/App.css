@@ -1,0 +1,72 @@
+.App {
+  text-align: center;
+  height: 100vh;
+}
+
+nav {
+  background: #1A2634;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.logo {
+  font-size: 28px;
+  margin: 0 50px;
+  color: #fff;
+
+}
+
+nav li {
+  display: inline-block;
+  margin: 0 20px;
+
+}
+
+a {
+  text-decoration: none;
+  color: #0e151d;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background: #fff;
+  transition: all ease-in-out 0.2s;
+
+}
+
+nav a:hover {
+  background: rgb(166, 175, 255);
+  transition: all ease-in-out 0.2s;
+}
+
+footer {
+  color: #fff;
+  position: fixed;
+  bottom: 0;
+  font-size: 12px;
+  width: 100%;
+  padding: 30px;
+  text-align: center;
+  background: #0e151d;
+}
+
+.component {
+  width: 80%;
+  margin: 50px auto;
+}
+
+.component p {
+  line-height: 28px;
+}
+
+nav .active {
+  background: #5855F3;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: #fff;
+}
