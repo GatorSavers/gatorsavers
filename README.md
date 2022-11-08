@@ -1,7 +1,14 @@
 # Gator Savers
+A website developed in the MERN stack for exploring budget options in Gainesville.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
+## Getting Started
+To start developing this project, first clone and fork this repository onto your local machine. Note that you need to have Node >= 16.0.0 and npm >= 8.0.0
+```bash
+git clone https://github.com/GatorSavers/gatorsavers.git
+cd gatorsavers
+npm install
+```
 ## Available Scripts
 
 In the project directory, you can run:
