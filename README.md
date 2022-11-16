@@ -6,7 +6,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 To start developing this project, first clone and fork this repository onto your local machine. Note that you need to have Node >= 16.0.0 and npm >= 8.0.0
 ```bash
 git clone https://github.com/GatorSavers/gatorsavers.git
-cd gatorsavers
+```
+If you are working on the backend, - `cd server`
+If you are working on the frontend, - `cd client`
+Then run:
+```bash
 npm install
 ```
 ## Available Scripts
