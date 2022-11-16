@@ -8,6 +8,7 @@ To start developing this project, first clone and fork this repository onto your
 git clone https://github.com/GatorSavers/gatorsavers.git
 ```
 If you are working on the backend, - `cd server`
+
 If you are working on the frontend, - `cd client`
 Then run:
 ```bash
