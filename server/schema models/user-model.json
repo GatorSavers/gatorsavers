@@ -1,0 +1,37 @@
+{
+    "$schema": "http://json-schema.org/schema",
+    "_id": "ObjectId('user')",
+    "title": "User",
+    "description": "The example model for an user of the website",
+    "properties": {
+        "username": {
+            "description": "The user's display name. Will be used to login to the application",
+            "type": "string"
+        },
+        "password": {
+            "description": "The user's password. It will be hashed before stored inside the database",
+            "type": "string"
+        },
+        "first_name": {
+            "description": "The user's real first name",
+            "type": "string"
+        },
+        "last_name": {
+            "description": "The user's real last name",
+            "type": "string"
+        },
+        "dob": {
+            "description": "The user's date of birth in YYYY-mm-dd format (ISO)",
+            "type":"object"
+        },
+        "email": {
+            "description": "The user's email; used for password reset and Google login",
+            "type":"string"
+        },
+        "favorites": {
+            "description": "The user's list of favorite locations",
+            "type": "array"
+        }
+    },
+    "required": ["username", "password", "first_name", "last_name", "dob", "email"]
+}

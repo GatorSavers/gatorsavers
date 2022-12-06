@@ -1,9 +1,6 @@
-import React, {Component} from "react";
-
-class About extends Component { 
-  render() {
+let About = () =>  {
     return (
-      <div>
+      <div className="component">
         <h2>Gator Savers</h2>
         <p>Mauris sem velit, vehicula eget sodales vitae,
         rhoncus eget sapien:</p>
@@ -16,7 +13,6 @@ class About extends Component {
         </ol>
       </div>
     );
-  }
 }
  
 export default About;

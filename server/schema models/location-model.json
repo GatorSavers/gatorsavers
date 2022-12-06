@@ -1,0 +1,26 @@
+{
+    "$schema": "http://json-schema.org/schema",
+    "_id": "ObjectId('location')",
+    "title": "Location Model",
+    "description": "A model JSON in which the location will be returned",
+    "type": "object",
+    "properties": {
+        "name": {
+            "description": "The name of the establishment",
+            "type": "string"
+        },
+        "address": {
+            "description": "Address of the establishment",
+            "type": "string"
+        },
+        "hours": {
+            "description": "When this location is open for business",
+            "type": "string"
+        },
+        "reviews": {
+            "description": "The list of reviews for this location, with references",
+            "type": "array"
+        }
+    },
+    "required": ["name", "address", "hours"]
+}

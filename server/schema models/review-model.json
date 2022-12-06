@@ -1,0 +1,29 @@
+{
+    "$schema": "http://json-schema.org/schema",
+    "title": "Review Model",
+    "description": "A review model which shows what an example JSON response would look like",
+    "properties": {
+        "_id": {
+            "description": "ID of the item. Should be in form ObjectID('ID')",
+            "type": "string"
+        },
+        "review_date": {
+            "description": "When this review was submitted by the public.",
+            "type": "object"
+        },
+        "text": {
+            "description": "Text containing the review",
+            "type": "string"
+        },
+        "stars": {
+            "description": "The number of favorites this review has.",
+            "type": "number"
+        },
+        "reviewer": {
+            "description": "Who wrote the review.",
+            "type":"string"
+        }
+    },
+    "required": ["_id", "reviewer", "text", "stars"]
+
+}
