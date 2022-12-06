@@ -1,18 +1,23 @@
-import React, { Component } from "react";
+import React, { useState, Component } from "react";
+import "../styles/components/login.scss"
  
-class Login extends Component {
-  render() {
+ function Login() {
     return (
-      <div>
-        <h2>HELLO</h2>
-        <p>Cras facilisis urna ornare ex volutpat, et
-        convallis erat elementum. Ut aliquam, ipsum vitae
-        gravida suscipit, metus dui bibendum est, eget rhoncus nibh
-        metus nec massa. Maecenas hendrerit laoreet augue
-        nec molestie. Cum sociis natoque penatibus et magnis
-        dis parturient montes, nascetur ridiculus mus.</p>
- 
-        <p>Duis a turpis sed lacus dapibus elementum sed eu lectus.</p>
+      <div className="login-wrapper">
+        <h1>Please Log In</h1>
+        <form>
+          <labeL>
+            <p>Username</p>
+            <input type="text" />
+          </labeL>
+          <label>
+            <p>password</p>
+            <input type="password" />
+          </label>
+          <div>
+            <button type="submit">Submit</button>
+          </div>
+        </form>
       </div>
     );
   }
