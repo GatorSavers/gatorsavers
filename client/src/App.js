@@ -23,7 +23,6 @@ class App extends Component {
             <Route path="/about" element= <About/> />
             <Route path="/login" element= <Login/> />
            </Routes>
-           <Footer/>
           </div>
       </BrowserRouter>
     )
