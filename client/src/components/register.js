@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Link as RouterLink } from 'react-router-dom'
 import validator from 'validator'
 import { regexPassword } from '../utils'
-
 import {
   Paper,
   Container,
@@ -22,42 +21,56 @@ import {
   FormHelperText,
 } from '@mui/material'
 import {
+  Face as FaceIcon,
   Visibility,
   VisibilityOff,
 } from '@mui/icons-material'
 import theme from '../styles/theme'
 
-function Login({}) {
+function Signup() {
   const [values, setValues] = useState({
     email: '',
     password: '',
+    repeatPassword: '',
     showPassword: false,
+    showRepeatPassword: false,
   })
   const [errors, setErrors] = useState({
     email: false,
     password: false,
+    repeatPassword: false,
     fetchError: false,
     fetchErrorMsg: '',
   })
 
   const handleChange = (fieldName) => (event) => {
     const currValue = event.target.value
-    let isCorrectValue =
-      fieldName === 'email'
-        ? validator.isEmail(currValue)
-        : regexPassword.test(currValue)
+    switch (fieldName) {
+      case 'email':
+        validator.isEmail(currValue)
+          ? setErrors({ ...errors, email: false })
+          : setErrors({ ...errors, email: true })
+        break
 
-    isCorrectValue
-      ? setErrors({ ...errors, [fieldName]: false })
-      : setErrors({ ...errors, [fieldName]: true })
+      case 'password':
+        regexPassword.test(currValue)
+          ? setErrors({ ...errors, password: false })
+          : setErrors({ ...errors, password: true })
+        break
 
+      case 'repeatPassword':
+        currValue === values.password
+          ? setErrors({ ...errors, repeatPassword: false })
+          : setErrors({ ...errors, repeatPassword: true })
+        break
+    }
     setValues({ ...values, [fieldName]: event.target.value })
   }
 
-  const handleShowPassword = () => {
+  const handleShowPassword = (showPasswordField) => {
     setValues({
       ...values,
-      showPassword: !values.showPassword,
+      [showPasswordField]: !values[showPasswordField],
     })
   }
 
@@ -65,7 +78,7 @@ function Login({}) {
     event.preventDefault()
 
     try {
-      const res = await fetch('/api/login', {
+      const res = await fetch('/api/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -86,10 +99,9 @@ function Login({}) {
       }
 
       const data = await res.json()
-      console.log({ data })
-
       // this is just a visual feedback for user for this demo
       // this will not be an error, rather we will show a different UI or redirect user to dashboard
+      // ideally we also want a way to confirm their email or identity
       setErrors({
         ...errors,
         fetchError: true,
@@ -98,7 +110,9 @@ function Login({}) {
       setValues({
         email: '',
         password: '',
+        repeatPassword: '',
         showPassword: false,
+        showRepeatPassword: false,
       })
       return
     } catch (error) {
@@ -113,7 +127,7 @@ function Login({}) {
 
   return (
     <>
-      <Container sx={{ marginTop: 'calc(20vh - 5%)' }} maxWidth='xs'>
+      <Container sx={{ marginTop: 'calc(100vh - 45%)' }} maxWidth='sm'>
         <Paper elevation={6}>
           <Container
             maxWidth='sm'
@@ -131,8 +145,9 @@ function Login({}) {
                 bgcolor: theme.palette.primary.main,
                 boxShadow: '0px 0px 8px rgba(131,153,167,0.99)',
               }}>
+              <FaceIcon sx={{ fontSize: 70 }} />
             </Avatar>
-            <h2>Login to Gator Savers</h2>
+            <h2>Register a new account</h2>
           </Container>
           <Stack
             component='form'
@@ -162,13 +177,49 @@ function Login({}) {
                   <InputAdornment position='end'>
                     <IconButton
                       aria-label='toggle password visibility'
-                      onClick={handleShowPassword}
+                      onClick={() => handleShowPassword('showPassword')}
                       edge='end'>
                       {values.showPassword ? <VisibilityOff /> : <Visibility />}
                     </IconButton>
                   </InputAdornment>
                 }
               />
+
+              <FormHelperText error={errors.password}>
+                Password must be at least 8 characters, have one symbol, 1
+                uppercase letter, 1 lowercase and 1 digit
+              </FormHelperText>
+            </FormControl>
+
+            <FormControl variant='filled'>
+              <InputLabel htmlFor='password-repeat-field'>
+                Repeat password
+              </InputLabel>
+              <FilledInput
+                id='password-repeat-field'
+                type={values.showRepeatPassword ? 'text' : 'password'}
+                value={values.repeatPassword}
+                onChange={handleChange('repeatPassword')}
+                endAdornment={
+                  <InputAdornment position='end'>
+                    <IconButton
+                      aria-label='toggle password visibility'
+                      onClick={() => handleShowPassword('showRepeatPassword')}
+                      edge='end'>
+                      {values.showRepeatPassword ? (
+                        <VisibilityOff />
+                      ) : (
+                        <Visibility />
+                      )}
+                    </IconButton>
+                  </InputAdornment>
+                }
+              />
+              {errors.repeatPassword && (
+                <FormHelperText error={errors.repeatPassword}>
+                  Password must be the same as above
+                </FormHelperText>
+              )}
             </FormControl>
             <Box
               sx={{
@@ -179,11 +230,10 @@ function Login({}) {
                 variant='contained'
                 size='large'
                 type='submit'
-                disabled={errors.email || errors.password}
                 sx={{
                   minWidth: '70%',
                 }}>
-                Login
+                Sign me up!
               </Button>
             </Box>
             {errors.fetchError && (
@@ -191,10 +241,9 @@ function Login({}) {
             )}
             <Divider />
             <Typography paragraph align='center'>
-              Don't have an account yet? {<br/>}
-              <br/>
-              <Link component={RouterLink} to='/signup'>
-                Sign up here
+              Already have an account?{' '}
+              <Link component={RouterLink} to='/loginlogin'>
+                Login here
               </Link>
             </Typography>
           </Stack>
@@ -204,4 +253,5 @@ function Login({}) {
   )
 }
 
-export default Login
+export default Signup
+

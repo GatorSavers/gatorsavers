@@ -8,8 +8,7 @@ import Home from "./components/home"
 import About from "./components/about"
 import Login from "./components/login"
 import Nav from "./components/nav"
-import Footer from "./components/footer"
-//import SideBar from './components/sidebar';
+import Signup from "./components/register"
 import "./_app.scss";
 
 class App extends Component {
@@ -22,8 +21,8 @@ class App extends Component {
             <Route path="/" element= <Home/> />
             <Route path="/about" element= <About/> />
             <Route path="/login" element= <Login/> />
+            <Route path="/signup" element= <Signup/> />
            </Routes>
-           <Footer/>
           </div>
       </BrowserRouter>
     )
