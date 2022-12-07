@@ -242,7 +242,7 @@ function Signup() {
             <Divider />
             <Typography paragraph align='center'>
               Already have an account?{' '}
-              <Link component={RouterLink} to='/'>
+              <Link component={RouterLink} to='/login'>
                 Login here
               </Link>
             </Typography>
